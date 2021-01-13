@@ -68,7 +68,7 @@ describe('.decode()', function () {
     assert.equal(ICAP.decode('XE870Z0SGY63X3UEPSSD6U9B3U9VIUOM1XP'), '0x08540829e2918aeb912b233b1e96366f075fe34d')
   })
   it('should work for \'indirect\'', function () {
-    assert.deepEqual(ICAP.decode('XE81VAPXREGGAVOFYORK'), {
+    assert.deepEqual(ICAP.decode('XE42VAPXREGGAVOFYORK'), {
       asset: 'VAP',
       institution: 'XREG',
       client: 'GAVOFYORK'
@@ -93,7 +93,7 @@ describe('.encode()', function () {
       institution: 'XREG',
       client: 'GAVOFYORK'
     }),
-    'XE81VAPXREGGAVOFYORK')
+    'XE42VAPXREGGAVOFYORK')
   })
   it('shouldn\'t allow non-standard hex input', function () {
     assert.throws(function () {
@@ -138,7 +138,7 @@ describe('.fromAsset()', function () {
       institution: 'XREG',
       client: 'GAVOFYORK'
     }),
-    'XE81VAPXREGGAVOFYORK')
+    'XE42VAPXREGGAVOFYORK')
   })
 })
 
@@ -158,7 +158,7 @@ describe('.toAddress()', function () {
 
 describe('.toAsset()', function () {
   it('should work for proper input', function () {
-    assert.deepEqual(ICAP.toAsset('XE81VAPXREGGAVOFYORK'), {
+    assert.deepEqual(ICAP.toAsset('XE42VAPXREGGAVOFYORK'), {
       asset: 'VAP',
       institution: 'XREG',
       client: 'GAVOFYORK'
@@ -191,7 +191,7 @@ describe('.isAddress()', function () {
 
 describe('.isAsset()', function () {
   it('should return true on proper input', function () {
-    assert.equal(ICAP.isAsset('XE81VAPXREGGAVOFYORK'), true)
+    assert.equal(ICAP.isAsset('XE42VAPXREGGAVOFYORK'), true)
   })
   it('should return false on invalid input', function () {
     assert.equal(ICAP.isAsset('XE7338O073KYGTWWZN0F2WZ0R8PX5ZPPZS'), false)
