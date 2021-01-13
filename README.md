@@ -1,11 +1,11 @@
-# ethereumjs-icap
+# vaporyjs-icap
 
-[![NPM Package](https://img.shields.io/npm/v/ethereumjs-icap.svg?style=flat-square)](https://www.npmjs.org/package/ethereumjs-icap)
-[![Build Status](https://img.shields.io/travis/ethereumjs/ethereumjs-icap.svg?branch=master&style=flat-square)](https://travis-ci.org/ethereumjs/ethereumjs-icap)
-[![Coverage Status](https://img.shields.io/coveralls/ethereumjs/ethereumjs-icap.svg?style=flat-square)](https://coveralls.io/r/ethereumjs/ethereumjs-icap)
-[![Gitter](https://img.shields.io/gitter/room/ethereum/ethereumjs-lib.svg?style=flat-square)](https://gitter.im/ethereum/ethereumjs-lib) or #ethereumjs on freenode
+[![NPM Package](https://img.shields.io/npm/v/vaporyjs-icap.svg?style=flat-square)](https://www.npmjs.org/package/vaporyjs-icap)
+[![Build Status](https://img.shields.io/travis/vaporyjs/vaporyjs-icap.svg?branch=master&style=flat-square)](https://travis-ci.org/vaporyjs/vaporyjs-icap)
+[![Coverage Status](https://img.shields.io/coveralls/vaporyjs/vaporyjs-icap.svg?style=flat-square)](https://coveralls.io/r/vaporyjs/vaporyjs-icap)
+[![Gitter](https://img.shields.io/gitter/room/vapory/vaporyjs-lib.svg?style=flat-square)](https://gitter.im/vapory/vaporyjs-lib) or #vaporyjs on freenode
 
-Utilities for handling [ICAP](https://github.com/ethereum/wiki/wiki/ICAP:-Inter-exchange-Client-Address-Protocol) addresses.
+Utilities for handling [ICAP](https://github.com/vaporyco/wiki/wiki/ICAP:-Inter-exchange-Client-Address-Protocol) addresses.
 
 It works in Node.js as well as in the browser via `browserify`. When minified for a browser, it should be less than 4K in size.
 
@@ -29,24 +29,24 @@ The `print` parameter above, when set to true, will create an IBAN in the *print
 
 The `address` parameter only supports `0x` prefixed input and will include that in the output.
 
-The `nonstd` parameter of `fromAddress`, when set to true, will turn on support for the *basic ICAP format* generating an invalid IBAN, but encoding the entire 160 bits of an Ethereum address.
+The `nonstd` parameter of `fromAddress`, when set to true, will turn on support for the *basic ICAP format* generating an invalid IBAN, but encoding the entire 160 bits of an Vapory address.
 
 ## Examples
 
 ```js
 ICAP.fromAsset({
-  asset: 'ETH',
+  asset: 'VAP',
   institution: 'XREG',
   client: 'GAVOFYORK'
 })
-// returns 'XE81ETHXREGGAVOFYORK'
+// returns 'XE81VAPXREGGAVOFYORK'
 
 ICAP.fromAddress('0x00c5496aee77c1ba1f0854206a26dda82a81d6d8')
 // returns 'XE7338O073KYGTWWZN0F2WZ0R8PX5ZPPZS'
 
-ICAP.toAsset('XE81ETHXREGGAVOFYORK')
+ICAP.toAsset('XE81VAPXREGGAVOFYORK')
 // returns {
-//   asset: 'ETH',
+//   asset: 'VAP',
 //   institution: 'XREG',
 //   client: 'GAVOFYORK'
 // }
@@ -63,15 +63,15 @@ That upper limit is `0x03ffffffffffffffffffffffffffffffffffffff` or `XE91GTJRJEU
 The following simple bruteforce code can be used to generate such addresses:
 
 ```js
-const ethUtil = require('ethereumjs-util')
+const vapUtil = require('vaporyjs-util')
 function generateDirectAddress () {
   while(true) {
     var privateKey = crypto.randomBytes(32) // or your favourite other random method
-    if (ethUtil.privateToAddress(privateKey)[0] <= 3) {
+    if (vapUtil.privateToAddress(privateKey)[0] <= 3) {
       return privateKey
     }
   }
 }
 ```
 
-Alternatively [`ethereumjs-wallet`](http://npmjs.com/packages/ethereumjs-wallet) can be used to generate compatible addresses.
+Alternatively [`vaporyjs-wallet`](http://npmjs.com/packages/vaporyjs-wallet) can be used to generate compatible addresses.

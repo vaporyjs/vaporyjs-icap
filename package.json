@@ -1,7 +1,8 @@
 {
-  "name": "ethereumjs-icap",
+  "name": "vaporyjs-icap",
+  "namespace": "vaporyjs",
   "version": "0.3.1",
-  "description": "Utilities for handling ICAP (Ethereum in IBAN) encoding",
+  "description": "Utilities for handling ICAP (Vapory in IBAN) encoding",
   "main": "index.js",
   "scripts": {
     "coverage": "istanbul cover _mocha",
@@ -12,18 +13,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ethereumjs/ethereumjs-icap.git"
+    "url": "https://github.com/vaporyjs/vaporyjs-icap.git"
   },
   "keywords": [
-    "ethereum",
+    "vapory",
     "utilties"
   ],
   "author": "Alex Beregszaszi <alex@rtfs.hu>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ethereumjs/ethereumjs-icap/issues"
+    "url": "https://github.com/vaporyjs/vaporyjs-icap/issues"
   },
-  "homepage": "https://github.com/ethereumjs/ethereumjs-icap",
+  "homepage": "https://github.com/vaporyjs/vaporyjs-icap",
   "dependencies": {
     "base-x": "^1.0.2",
     "convert-hex": "^0.1.0"
